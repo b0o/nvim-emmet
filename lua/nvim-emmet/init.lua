@@ -24,6 +24,10 @@ M.wrap_with_abbreviation = function()
 
         local opts = { text = utils.trim(to_replace) }
 
+        if vim.bo.filetype == "javascriptreact" or vim.bo.filetype == "typescriptreact" then
+            opts.syntax = "jsx"
+        end
+
         vim.lsp.buf_request(
             0,
             "emmet/expandAbbreviation",
